@@ -1,5 +1,7 @@
 package agenda_main;
 
+import java.util.Date;
+
 import agenda_dao.AgendaDao;
 import pack_agenda.Contato;
 
@@ -9,14 +11,28 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		Contato contato = new Contato();
+		AgendaDao agendadao = new AgendaDao();
 		
-		/*contato.setNome("GG");
-		contato.setIdade(34);
+		contato.setNome("Luci meu amor");
+		contato.setIdade(18);
 		contato.setDatacadastro(new Date());
+		
+		/*
+		agendadao.SalvarContato(contato);
 		*/
 		
-		AgendaDao agendadao = new AgendaDao();
-		agendadao.SalvarContato(contato);
+		
+		
+		
+		// atualizar contato
+		Contato contato2 = new Contato();
+		contato2.setNome("Geraldo");
+		contato2.setIdade(76);
+		contato2.setDatacadastro(new Date());
+		contato2.setId(8);// id do banco de tados
+		
+		
+		agendadao.AtualizarContato(contato2);
 		
 		// exibir os dados do banco de dados
 		

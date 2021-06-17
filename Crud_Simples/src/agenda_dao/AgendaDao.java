@@ -143,5 +143,56 @@ public class AgendaDao {
 		
 	}
 	
+	public void AtualizarContato(Contato contato) throws SQLException {
+		
+		// inserir a query 
+		String sql = "UPDATE crud_agenda_java SET nome = ?, idade = ?, datacadastro = ?"+
+		"WHERE id = ?";
+		
+		// CONEXOES
+		Connection conn = null; // OBJ DE CONEXAO
+		
+		//É usado para criar um objeto que representa a instrução SQL 
+		//que será executada, sendo que é invocado através do objeto Connetion.
+		PreparedStatement execquery = null;
+		
+		
+		
+		// tentar fazer a conexao	
+		
+		try {
+			
+			// conexao com a classe 			
+			conn = Conecction_db_agenda.ConexaoMysql();
+			
+			// criar a classe para execução da query
+			execquery = conn.prepareStatement(sql);
+			
+			// setar os valores para o bd
+			execquery.setString(1, contato.getNome());
+			execquery.setInt(2, contato.getIdade());
+			execquery.setDate(3, new Date(contato.getDatacadastro().getTime()));
+			// WHERE condição do id
+			execquery.setInt(4, contato.getId());
+			
+			// execução
+			execquery.execute();
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			// encerrar as conexoes abertas
+			
+			if(conn != null) {
+				conn.close();
+			}
+			if(execquery != null) {
+				execquery.close();
+			}
+		}
+		
+	}
 	
 }
