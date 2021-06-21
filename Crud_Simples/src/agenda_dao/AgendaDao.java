@@ -195,4 +195,47 @@ public class AgendaDao {
 		
 	}
 	
+	public void DeletarById(int id) throws SQLException {
+		
+		// query
+		
+		String sql = "DELETE FROM crud_agenda_java WHERE id = ?";
+		
+		// conexoes
+		
+		Connection conn = null;
+		PreparedStatement execquery = null;
+		
+		// tentar fazer a conexao
+		
+		try {
+			
+			// conexao com a classe			
+			conn = Conecction_db_agenda.ConexaoMysql();
+			
+			// criar a classe para execução da query
+			execquery = conn.prepareStatement(sql);
+			
+			
+			// setar os valores para o bd
+			execquery.setInt(1, id); // passsa o parametro da função
+			
+			execquery.execute();
+			System.out.println("Contato deletado com sucesso");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			// fechar as conexoes abertas
+			
+			if(conn != null) {
+				conn.close();
+			}
+			
+			if(execquery != null) {
+				execquery.close();
+			}
+		}
+	}
 }

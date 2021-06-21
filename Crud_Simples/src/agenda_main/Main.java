@@ -32,7 +32,11 @@ public class Main {
 		contato2.setId(8);// id do banco de tados
 		
 		
-		agendadao.AtualizarContato(contato2);
+		//agendadao.AtualizarContato(contato2);
+		
+		// deletar contato pelo numero do id
+		agendadao.DeletarById(7);
+		
 		
 		// exibir os dados do banco de dados
 		
