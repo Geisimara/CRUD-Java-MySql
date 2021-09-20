@@ -13,7 +13,7 @@ public class Main {
 		Contato contato = new Contato();
 		AgendaDao agendadao = new AgendaDao();
 		
-		contato.setNome("Luci meu amor");
+		contato.setNome("Luci");
 		contato.setIdade(18);
 		contato.setDatacadastro(new Date());
 		
